@@ -145,7 +145,7 @@ func __GetGlobalData() -> Array[SaveFileGlobal]:
 func __ValidateAutoload(autoload) -> bool:
 	var result = autoload != get_tree().get_current_scene() and autoload != self	
 	if len(Settings.StaticScriptsToSave) > 0:
-		result = result and Settings.StaticScriptsToSave.any(func(item : String): return autoload.script.resource_path.ends_with(item)) 
+		result = result and Settings.StaticScriptsToSave.any(func(item : String): return autoload.script and autoload.script.resource_path.ends_with(item)) 
 
 	return result	
 
